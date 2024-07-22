@@ -1,0 +1,147 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "ATM API",
+      "description": "API documentation for the ATM application",
+      "version": "1.0.0"
+    },
+    "basePath": "/",
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/account/{account_id}": {
+        "get": {
+          "tags": ["Account"],
+          "summary": "Get account details",
+          "parameters": [
+            {
+              "name": "account_id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation"
+            },
+            "404": {
+              "description": "Account not found"
+            }
+          }
+        },
+        "post": {
+          "tags": ["Account"],
+          "summary": "Create a new account",
+          "parameters": [
+            {
+              "name": "account_id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Account created"
+            },
+            "400": {
+              "description": "Invalid input"
+            }
+          }
+        },
+        "delete": {
+          "tags": ["Account"],
+          "summary": "Delete an account",
+          "parameters": [
+            {
+              "name": "account_id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Account deleted"
+            },
+            "400": {
+              "description": "Invalid input"
+            }
+          }
+        }
+      },
+      "/account/{account_id}/deposit": {
+        "post": {
+          "tags": ["Transaction"],
+          "summary": "Deposit amount to account",
+          "parameters": [
+            {
+              "name": "account_id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "amount",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Deposit successful"
+            },
+            "400": {
+              "description": "Invalid input"
+            }
+          }
+        }
+      },
+      "/account/{account_id}/withdraw": {
+        "post": {
+          "tags": ["Transaction"],
+          "summary": "Withdraw amount from account",
+          "parameters": [
+            {
+              "name": "account_id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "amount",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Withdrawal successful"
+            },
+            "400": {
+              "description": "Invalid input"
+            }
+          }
+        }
+      }
+    }
+  }
+  
